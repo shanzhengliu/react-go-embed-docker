@@ -36,7 +36,7 @@ func main() {
 	router.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello World!"))
 	})
-	router.Path("/").Handler(http.FileServer(http.FS(ui)))
+	router.PathPrefix("/").Handler(http.FileServer(http.FS(ui)))
 
 	http.ListenAndServe(":"+port, handlers.CORS(credentials, methods, origins)(router))
 }
