@@ -1,6 +1,6 @@
 
 ### Introduction  
-This file is used to create embed project with React(frontend) and Go(backend).  
+This is a template project used to create embed project with React(frontend) and Go(backend).  
 
 ### React  
 This project tech stack are  
