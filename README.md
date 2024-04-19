@@ -30,7 +30,9 @@ You can easily build the project including frontend and backend via command `Doc
 3. copy go binary file from step 2 into a alpha image, and expose 8080 port. and run binary file. 
 
 ### Cross build
+```shell
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
   --tag [url]/[imageName]:[tag1] --tag [url]/[imageName]:[tag2]:latest \
   --push .
+```
