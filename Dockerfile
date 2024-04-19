@@ -8,12 +8,16 @@ RUN pnpm build
 # node build end
 
 # go build start
-FROM golang:1.20.6-alpine3.18 AS GoBuild
+FROM golang:1.20.6-alpine3.18 AS BuildStage
 WORKDIR /app
-COPY ./backend-go/ .
-COPY --from=NodeBuild /app/dist/ ./ui/
+COPY . .
+COPY --from=NodeBuild /app/dist/ /app/frontend-build
+RUN apk --no-cache add upx
 RUN go mod download
-RUN go build -o /app/main .
+RUN OS="$(uname | tr '[:upper:]' '[:lower:]')" && \
+    ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/aarch64/arm64/' -e 's/armv[0-9]*/arm/')" && \
+    GOOS=${OS} GOARCH=${ARCH} go build -o /app/main .
+RUN upx /app/main
 # go build end
 
 # final image

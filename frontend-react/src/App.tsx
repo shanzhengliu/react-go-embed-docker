@@ -12,7 +12,7 @@ function App() {
     <>
       <div>
           <h1 className="text-6xl">
-              {data && data["data"]}
+              {data && data}
           </h1>
       </div>
     </>

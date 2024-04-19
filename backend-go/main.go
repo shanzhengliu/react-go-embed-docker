@@ -23,7 +23,7 @@ func main() {
 		port = os.Getenv("PORT")
 	}
 	if os.Getenv("ORIGIN") != "" {
-		origin = os.Getenv("PORT")
+		origin = os.Getenv("ORIGIN")
 	}
 
 	ui, _ := fs.Sub(UI, "ui")

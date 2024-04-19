@@ -1,3 +1,4 @@
 /frontend-react/node_modules/
 /frontend-react/dist/
 /backend-go/ui/default.html
+.idea/
