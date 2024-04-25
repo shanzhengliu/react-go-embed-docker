@@ -8,7 +8,7 @@ RUN pnpm build
 # node build end
 
 # go build start
-FROM golang:1.20.6-alpine3.18 AS BuildStage
+FROM golang:1.20.6-alpine3.18 AS GoBuild
 WORKDIR /app
 COPY . .
 COPY --from=NodeBuild /app/dist/ /app/frontend-build
