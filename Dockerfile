@@ -10,8 +10,8 @@ RUN pnpm build
 # go build start
 FROM golang:1.20.6-alpine3.18 AS GoBuild
 WORKDIR /app
-COPY . .
-COPY --from=NodeBuild /app/dist/ /app/frontend-build
+COPY ./backend-go /app
+COPY --from=NodeBuild /app/dist /app/ui
 RUN apk --no-cache add upx
 RUN go mod download
 RUN OS="$(uname | tr '[:upper:]' '[:lower:]')" && \
